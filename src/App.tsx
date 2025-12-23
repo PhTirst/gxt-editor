@@ -47,7 +47,7 @@ type SaveResult = {
 
 type UiEntry = {
     id: string;
-    key: string; // A-Z <= 8（前端强约束）
+    key: string; // 可见 ASCII，长度 1..8 字节（前端强约束）
     value: string; // 多行
 };
 
@@ -131,7 +131,7 @@ const I18N = {
         save: "保存",
         saveAs: "另存为",
         entriesList: "条目列表",
-        entriesHint: "KEY 允许大小写字母/数字/下划线（_），最多 8 位；VALUE 支持多行。建议先“新增”再编辑。",
+        entriesHint: "KEY 允许可见 ASCII 字符（0x20-0x7E），长度 1..8 字节；VALUE 支持多行。",
         emptyHint: "暂无内容。点击上方“新增”开始编辑。",
         addAtEnd: "在末尾新增",
         statusNoFile: "未选择文件",
@@ -168,7 +168,7 @@ const I18N = {
         langLabel: "语言",
         langZh: "中文",
         langEn: "English",
-        keyHelpInvalid: "KEY 含非法字符：仅允许 A-Z / a-z / 0-9 / _",
+        keyHelpInvalid: "KEY 必须是可见 ASCII（0x20-0x7E），长度 1..8 字节",
     },
     en: {
         appTitle: "GXT Editor",
@@ -179,7 +179,8 @@ const I18N = {
         save: "Save",
         saveAs: "Save As",
         entriesList: "Entries",
-        entriesHint: "KEY allows A-Z / a-z / 0-9 / underscore (_), up to 8 chars. VALUE supports multi-line.",        emptyHint: "No entries yet. Click “Add” to start editing.",
+        entriesHint: "KEY: printable ASCII (0x20-0x7E), length 1..8 bytes. VALUE supports multi-line.",
+        emptyHint: "No entries yet. Click “Add” to start editing.",
         addAtEnd: "Add at end",
         statusNoFile: "No file",
         statusEntries: (n: number) => `${n} ${n === 1 ? "entry" : "entries"}`,
@@ -215,7 +216,7 @@ const I18N = {
         langLabel: "Language",
         langZh: "中文",
         langEn: "English",
-        keyHelpInvalid: "Invalid KEY chars: only A-Z / a-z / 0-9 / _ allowed",
+        keyHelpInvalid: "KEY must be printable ASCII (0x20-0x7E), length 1..8 bytes",
     },
 } as const;
 
